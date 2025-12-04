@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import generics,mixins
+from rest_framework import viewsets
 
 # Create your views here.   
 
@@ -105,10 +106,15 @@ def student(request,id):
 #         return self.destroy(request, pk)
 
 ########### Generics ###########
-class Employees(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+# class Employees(generics.ListCreateAPIView):
+#     queryset = Employee.objects.all()
+#     serializer_class = EmployeeSerializer
 
-class Employee_Details(generics.RetrieveUpdateDestroyAPIView):
+# class Employee_Details(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Employee.objects.all()
+#     serializer_class = EmployeeSerializer
+
+####### Viewsets #########
+class EmployeesViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
