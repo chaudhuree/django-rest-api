@@ -27,3 +27,13 @@ python manage.py migrate
 ```
 python manage.py createsuperuser
 ```
+
+### copy dependencies 
+```
+pip freeze > requirements.txt
+```
+
+### install dependencies
+```
+pip install -r requirements.txt
+```
