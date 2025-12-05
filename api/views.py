@@ -1,3 +1,5 @@
+from blogs.models import Blog, Comment
+from blogs.serializers import BlogSerializer, CommentSerializer
 from students.models import Student
 from employees.models import Employee
 from .serializers import StudentSerializer,EmployeeSerializer
@@ -118,3 +120,24 @@ def student(request,id):
 class EmployeesViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+
+
+#### Blogs ####
+class BlogsView(generics.ListCreateAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+
+class BlogDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+    lookup_field = 'pk'
+
+class CommentView(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer

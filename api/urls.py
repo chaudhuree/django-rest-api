@@ -3,7 +3,7 @@ from . import views
 # viewsets
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
-router.register(r'employees', views.EmployeesViewSet)
+router.register('employees', views.EmployeesViewSet)
 
 urlpatterns = [
     # function based views
@@ -17,4 +17,11 @@ urlpatterns = [
     
     # viewsets
     path('', include(router.urls)),
+
+        # blogs
+    path('blogs/', views.BlogsView.as_view()),
+    path('blogs/<int:pk>/', views.BlogDetailView.as_view()),
+
+    path('comments/', views.CommentView.as_view()),
+    path('comments/<int:pk>/', views.CommentDetailView.as_view()),
 ]
