@@ -1,3 +1,4 @@
+from api.filters import EmployeeFilter
 from blogs.models import Blog, Comment
 from blogs.serializers import BlogSerializer, CommentSerializer
 from students.models import Student
@@ -124,7 +125,9 @@ class EmployeesViewSet(viewsets.ModelViewSet):
     # custom pagination
     pagination_class = CustomPagination
     # filter
-    filterset_fields = ['designation']
+    # filterset_fields = ['designation']
+    # custom filter
+    filterset_class = EmployeeFilter
 
 
 
