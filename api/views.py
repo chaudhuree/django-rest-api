@@ -123,6 +123,8 @@ class EmployeesViewSet(viewsets.ModelViewSet):
     serializer_class = EmployeeSerializer
     # custom pagination
     pagination_class = CustomPagination
+    # filter
+    filterset_fields = ['designation']
 
 
 
