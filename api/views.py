@@ -12,7 +12,7 @@ from django.http import Http404
 from rest_framework import generics,mixins
 from rest_framework import viewsets
 from .paginations import CustomPagination
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 # Create your views here.   
 
@@ -137,8 +137,9 @@ class BlogsView(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
     # add search field
-    filter_backends = [SearchFilter]
+    filter_backends = [SearchFilter,OrderingFilter]
     search_fields = ['blog_title']
+    ordering_fields = ['id']
 
 
 class BlogDetailView(generics.RetrieveUpdateDestroyAPIView):
